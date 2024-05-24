@@ -17,7 +17,6 @@
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" />
         <PackageReference Include="Verify.MSTest" />
         <PackageReference Include="Verify.SourceGenerators" />
-        <PackageReference Include="H.Generators.Extensions" />
         <PackageReference Include="H.Generators.Tests.Extensions" />
     </ItemGroup>
 
