@@ -1,11 +1,10 @@
-﻿#nullable enable
-
+﻿
 namespace DependencyPropertyGenerator;
 
 /// <summary>
 /// Describes the direction of the data flow in a binding.
 /// </summary>
-public enum DefaultBindingMode
+internal enum DefaultBindingMode
 {
     /// <summary>
     /// Causes changes to either the source property or the target property to automatically

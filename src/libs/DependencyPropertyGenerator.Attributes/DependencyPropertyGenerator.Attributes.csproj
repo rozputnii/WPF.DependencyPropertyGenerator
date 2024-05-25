@@ -5,5 +5,9 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<NoWarn>$(NoWarn);IDE0001;IDE0190</NoWarn>
+		
 	</PropertyGroup>
+	<ItemGroup>
+		<InternalsVisibleTo  Include="DependencyPropertyGenerator"/>
+	</ItemGroup>
 </Project>

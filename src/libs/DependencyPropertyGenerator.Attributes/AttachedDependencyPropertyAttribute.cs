@@ -1,16 +1,12 @@
-﻿// ReSharper disable RedundantNameQualifier
-// ReSharper disable MemberCanBePrivate.Global
-// ReSharper disable UnusedAutoPropertyAccessor.Global
-#nullable enable
-
+﻿
 namespace DependencyPropertyGenerator;
 
 /// <summary>
 /// Generates attached dependency property using DependencyProperty.RegisterAttached.
 /// </summary>
-[global::System.AttributeUsage(global::System.AttributeTargets.Class, AllowMultiple = true)]
-[global::System.Diagnostics.Conditional("DEPENDENCY_PROPERTY_GENERATOR_ATTRIBUTES")]
-public sealed class AttachedDependencyPropertyAttribute : global::System.Attribute
+[AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
+[System.Diagnostics.Conditional("DEPENDENCY_PROPERTY_GENERATOR_ATTRIBUTES")]
+internal sealed class AttachedDependencyPropertyAttribute : Attribute
 {
     /// <summary>
     /// Name of this dependency property.
@@ -20,7 +16,7 @@ public sealed class AttachedDependencyPropertyAttribute : global::System.Attribu
     /// <summary>
     /// Type of this dependency property.
     /// </summary>
-    public global::System.Type Type { get; }
+    public Type Type { get; }
 
     /// <summary>
     /// Default value of this dependency property. <br/>
@@ -63,7 +59,7 @@ public sealed class AttachedDependencyPropertyAttribute : global::System.Attribu
     /// The property will contain a <see cref="global::System.ComponentModel.TypeConverterAttribute"/> with this value. <br/>
     /// Default - <see langword="null"/>.
     /// </summary>
-    public global::System.Type? TypeConverter { get; set; }
+    public Type? TypeConverter { get; set; }
 
     /// <summary>
     /// The property will contain a <see cref="global::System.ComponentModel.BindableAttribute"/> with this value. <br/>
@@ -81,7 +77,7 @@ public sealed class AttachedDependencyPropertyAttribute : global::System.Attribu
     /// The property will contain a <see cref="global::System.ComponentModel.DesignerSerializationVisibilityAttribute"/> with this value. <br/>
     /// Default - <see langword="null"/>.
     /// </summary>
-    public global::System.ComponentModel.DesignerSerializationVisibility DesignerSerializationVisibility { get; set; }
+    public System.ComponentModel.DesignerSerializationVisibility DesignerSerializationVisibility { get; set; }
 
     /// <summary>
     /// The property will contain a <see cref="global::System.CLSCompliantAttribute"/> with this value. <br/>
@@ -99,7 +95,7 @@ public sealed class AttachedDependencyPropertyAttribute : global::System.Attribu
     /// The type for which the extension is intended. <br/>
     /// Default - DependencyObject.
     /// </summary>
-    public global::System.Type? BrowsableForType { get; set; }
+    public Type? BrowsableForType { get; set; }
 
     /// <summary>
     /// The dependency property xml documentation. <br/>
@@ -234,10 +230,10 @@ public sealed class AttachedDependencyPropertyAttribute : global::System.Attribu
     /// <exception cref="global::System.ArgumentNullException"></exception>
     public AttachedDependencyPropertyAttribute(
         string name,
-        global::System.Type type)
+        Type type)
     {
-        Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
-        Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+        Name = name ?? throw new ArgumentNullException(nameof(name));
+        Type = type ?? throw new ArgumentNullException(nameof(type));
     }
 }
 
@@ -245,9 +241,9 @@ public sealed class AttachedDependencyPropertyAttribute : global::System.Attribu
 /// Will generates attached dependency property using DependencyProperty.RegisterAttached.
 /// </summary>
 /// <typeparam name="T">Type of this dependency property.</typeparam>
-[global::System.AttributeUsage(global::System.AttributeTargets.Class, AllowMultiple = true)]
-[global::System.Diagnostics.Conditional("DEPENDENCY_PROPERTY_GENERATOR_ATTRIBUTES")]
-internal sealed class AttachedDependencyPropertyAttribute<T> : global::System.Attribute
+[AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
+[System.Diagnostics.Conditional("DEPENDENCY_PROPERTY_GENERATOR_ATTRIBUTES")]
+internal sealed class AttachedDependencyPropertyAttribute<T> : Attribute
 {
     /// <summary>
     /// Name of this dependency property.
@@ -257,7 +253,7 @@ internal sealed class AttachedDependencyPropertyAttribute<T> : global::System.At
     /// <summary>
     /// Type of this dependency property.
     /// </summary>
-    public global::System.Type Type { get; }
+    public Type Type { get; }
 
     /// <summary>
     /// Default value of this dependency property. <br/>
@@ -300,7 +296,7 @@ internal sealed class AttachedDependencyPropertyAttribute<T> : global::System.At
     /// The property will contain a <see cref="global::System.ComponentModel.TypeConverterAttribute"/> with this value. <br/>
     /// Default - <see langword="null"/>.
     /// </summary>
-    public global::System.Type? TypeConverter { get; set; }
+    public Type? TypeConverter { get; set; }
 
     /// <summary>
     /// The property will contain a <see cref="global::System.ComponentModel.BindableAttribute"/> with this value. <br/>
@@ -318,7 +314,7 @@ internal sealed class AttachedDependencyPropertyAttribute<T> : global::System.At
     /// The property will contain a <see cref="global::System.ComponentModel.DesignerSerializationVisibilityAttribute"/> with this value. <br/>
     /// Default - <see langword="null"/>.
     /// </summary>
-    public global::System.ComponentModel.DesignerSerializationVisibility DesignerSerializationVisibility { get; set; }
+    public System.ComponentModel.DesignerSerializationVisibility DesignerSerializationVisibility { get; set; }
 
     /// <summary>
     /// The property will contain a <see cref="global::System.CLSCompliantAttribute"/> with this value. <br/>
@@ -336,7 +332,7 @@ internal sealed class AttachedDependencyPropertyAttribute<T> : global::System.At
     /// The type for which the extension is intended. <br/>
     /// Default - DependencyObject.
     /// </summary>
-    public global::System.Type? BrowsableForType { get; set; }
+    public Type? BrowsableForType { get; set; }
 
     /// <summary>
     /// The dependency property xml documentation. <br/>
@@ -471,7 +467,7 @@ internal sealed class AttachedDependencyPropertyAttribute<T> : global::System.At
     public AttachedDependencyPropertyAttribute(
         string name)
     {
-        Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
+        Name = name ?? throw new ArgumentNullException(nameof(name));
         Type = typeof(T);
     }
 }
@@ -481,9 +477,9 @@ internal sealed class AttachedDependencyPropertyAttribute<T> : global::System.At
 /// </summary>
 /// <typeparam name="T">Type of this dependency property.</typeparam>
 /// <typeparam name="TBrowsableForType">The type for which the extension is intended.</typeparam>
-[global::System.AttributeUsage(global::System.AttributeTargets.Class, AllowMultiple = true)]
-[global::System.Diagnostics.Conditional("DEPENDENCY_PROPERTY_GENERATOR_ATTRIBUTES")]
-internal sealed class AttachedDependencyPropertyAttribute<T, TBrowsableForType> : global::System.Attribute
+[AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
+[System.Diagnostics.Conditional("DEPENDENCY_PROPERTY_GENERATOR_ATTRIBUTES")]
+internal sealed class AttachedDependencyPropertyAttribute<T, TBrowsableForType> : Attribute
 {
     /// <summary>
     /// Name of this dependency property.
@@ -493,7 +489,7 @@ internal sealed class AttachedDependencyPropertyAttribute<T, TBrowsableForType> 
     /// <summary>
     /// Type of this dependency property.
     /// </summary>
-    public global::System.Type Type { get; }
+    public Type Type { get; }
 
     /// <summary>
     /// Default value of this dependency property. <br/>
@@ -536,7 +532,7 @@ internal sealed class AttachedDependencyPropertyAttribute<T, TBrowsableForType> 
     /// The property will contain a <see cref="global::System.ComponentModel.TypeConverterAttribute"/> with this value. <br/>
     /// Default - <see langword="null"/>.
     /// </summary>
-    public global::System.Type? TypeConverter { get; set; }
+    public Type? TypeConverter { get; set; }
 
     /// <summary>
     /// The property will contain a <see cref="global::System.ComponentModel.BindableAttribute"/> with this value. <br/>
@@ -554,7 +550,7 @@ internal sealed class AttachedDependencyPropertyAttribute<T, TBrowsableForType> 
     /// The property will contain a <see cref="global::System.ComponentModel.DesignerSerializationVisibilityAttribute"/> with this value. <br/>
     /// Default - <see langword="null"/>.
     /// </summary>
-    public global::System.ComponentModel.DesignerSerializationVisibility DesignerSerializationVisibility { get; set; }
+    public System.ComponentModel.DesignerSerializationVisibility DesignerSerializationVisibility { get; set; }
 
     /// <summary>
     /// The property will contain a <see cref="global::System.CLSCompliantAttribute"/> with this value. <br/>
@@ -572,7 +568,7 @@ internal sealed class AttachedDependencyPropertyAttribute<T, TBrowsableForType> 
     /// The type for which the extension is intended. <br/>
     /// Default - DependencyObject.
     /// </summary>
-    public global::System.Type? BrowsableForType { get; set; }
+    public Type? BrowsableForType { get; set; }
 
     /// <summary>
     /// The dependency property xml documentation. <br/>
@@ -707,7 +703,7 @@ internal sealed class AttachedDependencyPropertyAttribute<T, TBrowsableForType> 
     public AttachedDependencyPropertyAttribute(
         string name)
     {
-        Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
+        Name = name ?? throw new ArgumentNullException(nameof(name));
         Type = typeof(T);
         BrowsableForType = typeof(TBrowsableForType);
     }

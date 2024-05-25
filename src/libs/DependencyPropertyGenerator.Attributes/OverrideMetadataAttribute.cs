@@ -1,17 +1,13 @@
-﻿// ReSharper disable RedundantNameQualifier
-// ReSharper disable MemberCanBePrivate.Global
-// ReSharper disable UnusedAutoPropertyAccessor.Global
-#nullable enable
-
+﻿
 namespace DependencyPropertyGenerator;
 
 /// <summary>
 /// Overrides dependency property metadata using DependencyProperty.OverrideMetadata. <br/>
 /// Metadata override behavior: <seealso href="https://docs.microsoft.com/en-us/dotnet/desktop/wpf/properties/framework-property-metadata?view=netdesktop-6.0#metadata-override-behavior"/>
 /// </summary>
-[global::System.AttributeUsage(global::System.AttributeTargets.Class, AllowMultiple = true)]
-[global::System.Diagnostics.Conditional("DEPENDENCY_PROPERTY_GENERATOR_ATTRIBUTES")]
-public sealed class OverrideMetadataAttribute : global::System.Attribute
+[AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
+[System.Diagnostics.Conditional("DEPENDENCY_PROPERTY_GENERATOR_ATTRIBUTES")]
+internal sealed class OverrideMetadataAttribute : Attribute
 {
     /// <summary>
     /// Name of this dependency property.
@@ -21,7 +17,7 @@ public sealed class OverrideMetadataAttribute : global::System.Attribute
     /// <summary>
     /// Type of this dependency property.
     /// </summary>
-    public global::System.Type Type { get; }
+    public Type Type { get; }
 
     /// <summary>
     /// Default value of this dependency property. <br/>
@@ -154,10 +150,10 @@ public sealed class OverrideMetadataAttribute : global::System.Attribute
     /// <exception cref="global::System.ArgumentNullException"></exception>
     public OverrideMetadataAttribute(
         string name,
-        global::System.Type type)
+        Type type)
     {
-        Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
-        Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+        Name = name ?? throw new ArgumentNullException(nameof(name));
+        Type = type ?? throw new ArgumentNullException(nameof(type));
     }
 }
 
@@ -166,9 +162,9 @@ public sealed class OverrideMetadataAttribute : global::System.Attribute
 /// Metadata override behavior: <seealso href="https://docs.microsoft.com/en-us/dotnet/desktop/wpf/properties/framework-property-metadata?view=netdesktop-6.0#metadata-override-behavior"/>
 /// </summary>
 /// <typeparam name="T">Type of this dependency property.</typeparam>
-[global::System.AttributeUsage(global::System.AttributeTargets.Class, AllowMultiple = true)]
-[global::System.Diagnostics.Conditional("DEPENDENCY_PROPERTY_GENERATOR_ATTRIBUTES")]
-internal sealed class OverrideMetadataAttribute<T> : global::System.Attribute
+[AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
+[System.Diagnostics.Conditional("DEPENDENCY_PROPERTY_GENERATOR_ATTRIBUTES")]
+internal sealed class OverrideMetadataAttribute<T> : Attribute
 {
     /// <summary>
     /// Name of this dependency property.
@@ -178,7 +174,7 @@ internal sealed class OverrideMetadataAttribute<T> : global::System.Attribute
     /// <summary>
     /// Type of this dependency property.
     /// </summary>
-    public global::System.Type Type { get; }
+    public Type Type { get; }
 
     /// <summary>
     /// Default value of this dependency property. <br/>
@@ -311,7 +307,7 @@ internal sealed class OverrideMetadataAttribute<T> : global::System.Attribute
     public OverrideMetadataAttribute(
         string name)
     {
-        Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
+        Name = name ?? throw new ArgumentNullException(nameof(name));
         Type = typeof(T);
     }
 }

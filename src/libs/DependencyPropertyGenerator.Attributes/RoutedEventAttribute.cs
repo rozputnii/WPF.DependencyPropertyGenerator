@@ -1,16 +1,12 @@
-﻿// ReSharper disable RedundantNameQualifier
-// ReSharper disable MemberCanBePrivate.Global
-// ReSharper disable UnusedAutoPropertyAccessor.Global
-#nullable enable
-
+﻿
 namespace DependencyPropertyGenerator;
 
 /// <summary>
 /// Generates routed event using EventManager.RegisterRoutedEvent.
 /// </summary>
-[global::System.AttributeUsage(global::System.AttributeTargets.Class, AllowMultiple = true)]
-[global::System.Diagnostics.Conditional("DEPENDENCY_PROPERTY_GENERATOR_ATTRIBUTES")]
-public sealed class RoutedEventAttribute : global::System.Attribute
+[AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
+[System.Diagnostics.Conditional("DEPENDENCY_PROPERTY_GENERATOR_ATTRIBUTES")]
+internal sealed class RoutedEventAttribute : Attribute
 {
     /// <summary>
     /// Name of this routed event.
@@ -26,7 +22,7 @@ public sealed class RoutedEventAttribute : global::System.Attribute
     /// Type of this routed event. <br/>
     /// Default - typeof(RoutedEventHandler).
     /// </summary>
-    public global::System.Type? Type { get; set; }
+    public Type? Type { get; set; }
 
     /// <summary>
     /// Will generates attached routed event. <br/>
@@ -78,7 +74,7 @@ public sealed class RoutedEventAttribute : global::System.Attribute
         string name,
         RoutedEventStrategy strategy)
     {
-        Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
+        Name = name ?? throw new ArgumentNullException(nameof(name));
         Strategy = strategy;
     }
 }
@@ -87,9 +83,9 @@ public sealed class RoutedEventAttribute : global::System.Attribute
 /// Will generates routed event using EventManager.RegisterRoutedEvent.
 /// </summary>
 /// <typeparam name="T">Type of this routed event.</typeparam>
-[global::System.AttributeUsage(global::System.AttributeTargets.Class, AllowMultiple = true)]
-[global::System.Diagnostics.Conditional("DEPENDENCY_PROPERTY_GENERATOR_ATTRIBUTES")]
-internal sealed class RoutedEventAttribute<T> : global::System.Attribute
+[AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
+[System.Diagnostics.Conditional("DEPENDENCY_PROPERTY_GENERATOR_ATTRIBUTES")]
+internal sealed class RoutedEventAttribute<T> : Attribute
 {
     /// <summary>
     /// Name of this routed event.
@@ -105,7 +101,7 @@ internal sealed class RoutedEventAttribute<T> : global::System.Attribute
     /// Type of this routed event. <br/>
     /// Default - typeof(RoutedEventHandler).
     /// </summary>
-    public global::System.Type? Type { get; set; }
+    public Type? Type { get; set; }
 
     /// <summary>
     /// Will generates attached routed event. <br/>
@@ -157,7 +153,7 @@ internal sealed class RoutedEventAttribute<T> : global::System.Attribute
         string name,
         RoutedEventStrategy strategy)
     {
-        Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
+        Name = name ?? throw new ArgumentNullException(nameof(name));
         Strategy = strategy;
         Type = typeof(T);
     }

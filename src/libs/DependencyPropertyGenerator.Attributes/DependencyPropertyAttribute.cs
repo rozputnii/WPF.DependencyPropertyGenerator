@@ -1,16 +1,12 @@
-﻿// ReSharper disable RedundantNameQualifier
-// ReSharper disable MemberCanBePrivate.Global
-// ReSharper disable UnusedAutoPropertyAccessor.Global
-#nullable enable
-
+﻿
 namespace DependencyPropertyGenerator;
 
 /// <summary>
 /// Generates attached dependency property using DependencyProperty.Register.
 /// </summary>
-[global::System.AttributeUsage(global::System.AttributeTargets.Class, AllowMultiple = true)]
-[global::System.Diagnostics.Conditional("DEPENDENCY_PROPERTY_GENERATOR_ATTRIBUTES")]
-public sealed class DependencyPropertyAttribute : global::System.Attribute
+[AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
+[System.Diagnostics.Conditional("DEPENDENCY_PROPERTY_GENERATOR_ATTRIBUTES")]
+internal sealed class DependencyPropertyAttribute : Attribute
 {
     /// <summary>
     /// Name of this dependency property.
@@ -20,7 +16,7 @@ public sealed class DependencyPropertyAttribute : global::System.Attribute
     /// <summary>
     /// Type of this dependency property.
     /// </summary>
-    public global::System.Type Type { get; }
+    public Type Type { get; }
 
     /// <summary>
     /// Default value of this dependency property. <br/>
@@ -69,7 +65,7 @@ public sealed class DependencyPropertyAttribute : global::System.Attribute
     /// The property will contain a <see cref="global::System.ComponentModel.TypeConverterAttribute"/> with this value. <br/>
     /// Default - <see langword="null"/>.
     /// </summary>
-    public global::System.Type? TypeConverter { get; set; }
+    public Type? TypeConverter { get; set; }
 
     /// <summary>
     /// The property will contain a <see cref="global::System.ComponentModel.BindableAttribute"/> with this value. <br/>
@@ -87,7 +83,7 @@ public sealed class DependencyPropertyAttribute : global::System.Attribute
     /// The property will contain a <see cref="global::System.ComponentModel.DesignerSerializationVisibilityAttribute"/> with this value. <br/>
     /// Default - <see langword="null"/>.
     /// </summary>
-    public global::System.ComponentModel.DesignerSerializationVisibility DesignerSerializationVisibility { get; set; }
+    public System.ComponentModel.DesignerSerializationVisibility DesignerSerializationVisibility { get; set; }
 
     /// <summary>
     /// The property will contain a <see cref="global::System.CLSCompliantAttribute"/> with this value. <br/>
@@ -235,10 +231,10 @@ public sealed class DependencyPropertyAttribute : global::System.Attribute
     /// <exception cref="global::System.ArgumentNullException"></exception>
     public DependencyPropertyAttribute(
         string name,
-        global::System.Type type)
+        Type type)
     {
-        Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
-        Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
+        Name = name ?? throw new ArgumentNullException(nameof(name));
+        Type = type ?? throw new ArgumentNullException(nameof(type));
     }
 }
 
@@ -246,9 +242,9 @@ public sealed class DependencyPropertyAttribute : global::System.Attribute
 /// Generates attached dependency property using DependencyProperty.Register.
 /// </summary>
 /// <typeparam name="T">Type of this dependency property.</typeparam>
-[global::System.AttributeUsage(global::System.AttributeTargets.Class, AllowMultiple = true)]
-[global::System.Diagnostics.Conditional("DEPENDENCY_PROPERTY_GENERATOR_ATTRIBUTES")]
-internal sealed class DependencyPropertyAttribute<T> : global::System.Attribute
+[AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
+[System.Diagnostics.Conditional("DEPENDENCY_PROPERTY_GENERATOR_ATTRIBUTES")]
+internal sealed class DependencyPropertyAttribute<T> : Attribute
 {
     /// <summary>
     /// Name of this dependency property.
@@ -258,7 +254,7 @@ internal sealed class DependencyPropertyAttribute<T> : global::System.Attribute
     /// <summary>
     /// Type of this dependency property.
     /// </summary>
-    public global::System.Type Type { get; }
+    public Type Type { get; }
 
     /// <summary>
     /// Default value of this dependency property. <br/>
@@ -307,7 +303,7 @@ internal sealed class DependencyPropertyAttribute<T> : global::System.Attribute
     /// The property will contain a <see cref="global::System.ComponentModel.TypeConverterAttribute"/> with this value. <br/>
     /// Default - <see langword="null"/>.
     /// </summary>
-    public global::System.Type? TypeConverter { get; set; }
+    public Type? TypeConverter { get; set; }
 
     /// <summary>
     /// The property will contain a <see cref="global::System.ComponentModel.BindableAttribute"/> with this value. <br/>
@@ -325,7 +321,7 @@ internal sealed class DependencyPropertyAttribute<T> : global::System.Attribute
     /// The property will contain a <see cref="global::System.ComponentModel.DesignerSerializationVisibilityAttribute"/> with this value. <br/>
     /// Default - <see langword="null"/>.
     /// </summary>
-    public global::System.ComponentModel.DesignerSerializationVisibility DesignerSerializationVisibility { get; set; }
+    public System.ComponentModel.DesignerSerializationVisibility DesignerSerializationVisibility { get; set; }
 
     /// <summary>
     /// The property will contain a <see cref="global::System.CLSCompliantAttribute"/> with this value. <br/>
@@ -473,7 +469,7 @@ internal sealed class DependencyPropertyAttribute<T> : global::System.Attribute
     public DependencyPropertyAttribute(
         string name)
     {
-        Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
+        Name = name ?? throw new ArgumentNullException(nameof(name));
         Type = typeof(T);
     }
 }

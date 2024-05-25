@@ -1,16 +1,12 @@
-﻿// ReSharper disable RedundantNameQualifier
-// ReSharper disable MemberCanBePrivate.Global
-// ReSharper disable UnusedAutoPropertyAccessor.Global
-#nullable enable
-
+﻿
 namespace DependencyPropertyGenerator;
 
 /// <summary>
 /// https://docs.microsoft.com/en-us/dotnet/desktop/wpf/advanced/how-to-add-an-owner-type-for-a-dependency-property?view=netframeworkdesktop-4.8
 /// </summary>
-[global::System.AttributeUsage(global::System.AttributeTargets.Class, AllowMultiple = true)]
-[global::System.Diagnostics.Conditional("DEPENDENCY_PROPERTY_GENERATOR_ATTRIBUTES")]
-public sealed class AddOwnerAttribute : global::System.Attribute
+[AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
+[System.Diagnostics.Conditional("DEPENDENCY_PROPERTY_GENERATOR_ATTRIBUTES")]
+internal sealed class AddOwnerAttribute : Attribute
 {
     /// <summary>
     /// Name of this dependency property.
@@ -20,7 +16,7 @@ public sealed class AddOwnerAttribute : global::System.Attribute
     /// <summary>
     /// Type of this dependency property.
     /// </summary>
-    public global::System.Type Type { get; }
+    public Type Type { get; }
 
     /// <summary>
     /// Default value of this dependency property. <br/>
@@ -69,7 +65,7 @@ public sealed class AddOwnerAttribute : global::System.Attribute
     /// The property will contain a <see cref="global::System.ComponentModel.TypeConverterAttribute"/> with this value. <br/>
     /// Default - <see langword="null"/>.
     /// </summary>
-    public global::System.Type? TypeConverter { get; set; }
+    public Type? TypeConverter { get; set; }
 
     /// <summary>
     /// The property will contain a <see cref="global::System.ComponentModel.BindableAttribute"/> with this value. <br/>
@@ -87,7 +83,7 @@ public sealed class AddOwnerAttribute : global::System.Attribute
     /// The property will contain a <see cref="global::System.ComponentModel.DesignerSerializationVisibilityAttribute"/> with this value. <br/>
     /// Default - <see langword="null"/>.
     /// </summary>
-    public global::System.ComponentModel.DesignerSerializationVisibility DesignerSerializationVisibility { get; set; }
+    public System.ComponentModel.DesignerSerializationVisibility DesignerSerializationVisibility { get; set; }
 
     /// <summary>
     /// The property will contain a <see cref="global::System.CLSCompliantAttribute"/> with this value. <br/>
@@ -105,7 +101,7 @@ public sealed class AddOwnerAttribute : global::System.Attribute
     /// The type that owns the original Dependency Property. <br/>
     /// Required.
     /// </summary>
-    public global::System.Type? FromType { get; }
+    public Type? FromType { get; }
 
     /// <summary>
     /// The dependency property xml documentation. <br/>
@@ -241,12 +237,12 @@ public sealed class AddOwnerAttribute : global::System.Attribute
     /// <exception cref="global::System.ArgumentNullException"></exception>
     public AddOwnerAttribute(
         string name,
-        global::System.Type type,
-        global::System.Type fromType)
+        Type type,
+        Type fromType)
     {
-        Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
-        Type = type ?? throw new global::System.ArgumentNullException(nameof(type));
-        FromType = fromType ?? throw new global::System.ArgumentNullException(nameof(fromType));
+        Name = name ?? throw new ArgumentNullException(nameof(name));
+        Type = type ?? throw new ArgumentNullException(nameof(type));
+        FromType = fromType ?? throw new ArgumentNullException(nameof(fromType));
     }
 }
 
@@ -255,9 +251,9 @@ public sealed class AddOwnerAttribute : global::System.Attribute
 /// </summary>
 /// <typeparam name="T">Type of this dependency property.</typeparam>
 /// <typeparam name="TFromType">The type for which the extension is intended.</typeparam>
-[global::System.AttributeUsage(global::System.AttributeTargets.Class, AllowMultiple = true)]
-[global::System.Diagnostics.Conditional("DEPENDENCY_PROPERTY_GENERATOR_ATTRIBUTES")]
-internal sealed class AddOwnerAttribute<T, TFromType> : global::System.Attribute
+[AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
+[System.Diagnostics.Conditional("DEPENDENCY_PROPERTY_GENERATOR_ATTRIBUTES")]
+internal sealed class AddOwnerAttribute<T, TFromType> : Attribute
 {
     /// <summary>
     /// Name of this dependency property.
@@ -267,7 +263,7 @@ internal sealed class AddOwnerAttribute<T, TFromType> : global::System.Attribute
     /// <summary>
     /// Type of this dependency property.
     /// </summary>
-    public global::System.Type Type { get; }
+    public Type Type { get; }
 
     /// <summary>
     /// Default value of this dependency property. <br/>
@@ -316,7 +312,7 @@ internal sealed class AddOwnerAttribute<T, TFromType> : global::System.Attribute
     /// The property will contain a <see cref="global::System.ComponentModel.TypeConverterAttribute"/> with this value. <br/>
     /// Default - <see langword="null"/>.
     /// </summary>
-    public global::System.Type? TypeConverter { get; set; }
+    public Type? TypeConverter { get; set; }
 
     /// <summary>
     /// The property will contain a <see cref="global::System.ComponentModel.BindableAttribute"/> with this value. <br/>
@@ -334,7 +330,7 @@ internal sealed class AddOwnerAttribute<T, TFromType> : global::System.Attribute
     /// The property will contain a <see cref="global::System.ComponentModel.DesignerSerializationVisibilityAttribute"/> with this value. <br/>
     /// Default - <see langword="null"/>.
     /// </summary>
-    public global::System.ComponentModel.DesignerSerializationVisibility DesignerSerializationVisibility { get; set; }
+    public System.ComponentModel.DesignerSerializationVisibility DesignerSerializationVisibility { get; set; }
 
     /// <summary>
     /// The property will contain a <see cref="global::System.CLSCompliantAttribute"/> with this value. <br/>
@@ -352,7 +348,7 @@ internal sealed class AddOwnerAttribute<T, TFromType> : global::System.Attribute
     /// The type that owns the original Dependency Property. <br/>
     /// Required.
     /// </summary>
-    public global::System.Type? FromType { get; }
+    public Type? FromType { get; }
 
     /// <summary>
     /// The dependency property xml documentation. <br/>
@@ -487,7 +483,7 @@ internal sealed class AddOwnerAttribute<T, TFromType> : global::System.Attribute
     public AddOwnerAttribute(
         string name)
     {
-        Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
+        Name = name ?? throw new ArgumentNullException(nameof(name));
         Type = typeof(T);
         FromType = typeof(TFromType);
     }
