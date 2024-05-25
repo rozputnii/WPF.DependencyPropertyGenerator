@@ -6,7 +6,7 @@ namespace DependencyPropertyGenerator;
 /// Specifies the category value of a System.Windows.LocalizabilityAttribute 
 /// for a binary XAML (BAML) class or class member.
 /// </summary>
-internal enum Localizability
+public enum Localizability
 {
     /// <summary>
     /// Resource does not belong to a standard category.

@@ -11,7 +11,7 @@ namespace DependencyPropertyGenerator;
 /// </summary>
 [global::System.AttributeUsage(global::System.AttributeTargets.Class, AllowMultiple = true)]
 [global::System.Diagnostics.Conditional("DEPENDENCY_PROPERTY_GENERATOR_ATTRIBUTES")]
-internal sealed class OverrideMetadataAttribute : global::System.Attribute
+public sealed class OverrideMetadataAttribute : global::System.Attribute
 {
     /// <summary>
     /// Name of this dependency property.

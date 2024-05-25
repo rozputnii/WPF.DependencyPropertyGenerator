@@ -1,75 +1,58 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFrameworks>netstandard2.0</TargetFrameworks><!-- ;net6.0;net7.0;net8.0 -->
-        <NoWarn>$(NoWarn);CA1014;CA1308;CA1031;CA1307</NoWarn>
-        <IsRoslynComponent>true</IsRoslynComponent>
-        <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
-        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>net8.0</TargetFrameworks><!-- ;net6.0;net7.0;net8.0 -->
+		<NoWarn>$(NoWarn);CA1014;CA1308;CA1031;CA1307</NoWarn>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<IsRoslynComponent>true</IsRoslynComponent>
+		<EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+		<TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+	</PropertyGroup>
 
-    <PropertyGroup Label="NuGet">
-        <NoWarn>$(NoWarn);NU5128;CA1724</NoWarn>
-        <DevelopmentDependency>true</DevelopmentDependency>
-        <IncludeBuildOutput>false</IncludeBuildOutput>
-        <GenerateDocumentationFile>false</GenerateDocumentationFile>
-        <Description>C# Source Generator library to generate DependencyProperty.</Description>
-        <PackageTags>dependency;property;dependency property;generator;source generator</PackageTags>
-    </PropertyGroup>
+	<PropertyGroup Label="NuGet">
+		<NoWarn>$(NoWarn);NU5128;CA1724</NoWarn>
+		<!--<GeneratePackageOnBuild>true</GeneratePackageOnBuild>-->
+		
+		<Version>1.0.3</Version>
+		
+		<Description>C# Source Generator library to generate DependencyProperty.</Description>
+		<PackageTags>dependency;property;dependency property;generator;source generator</PackageTags>
+		<IncludeSymbols>False</IncludeSymbols>
+		<PackageId>WPF.DependencyPropertyGenerator</PackageId>
+		<Authors>rozputnii</Authors>
+		<PackageIcon>nuget_icon.png</PackageIcon>
+	</PropertyGroup>
+	
+	<ItemGroup Label="Attributes">
+		<EmbeddedResource Include="../$(AssemblyName).Attributes/*.cs" Visible="false" />
+		<AdditionalFiles Include="../$(AssemblyName).Attributes/*.cs" Visible="false" />
+	</ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="H.Resources.Generator">
-          <PrivateAssets>all</PrivateAssets>
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-        <PackageReference Include="IsExternalInit">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-        <PackageReference Include="H.Generators.Extensions" PrivateAssets="all" />
-    </ItemGroup>
+	<ItemGroup>
+	  <None Include="..\..\..\assets\nuget_icon.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
 
-    <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
-        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" PrivateAssets="all" />
-    </ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="H.Resources.Generator" Version="1.6.0">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	</ItemGroup>
 
-    <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
-        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" PrivateAssets="all" VersionOverride="4.6.0" />
-    </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\DependencyPropertyGenerator.Attributes\DependencyPropertyGenerator.Attributes.csproj" PrivateAssets="all"/>
+		<ProjectReference Include="..\H.Generators.Extensions\H.Generators.Extensions.csproj" PrivateAssets="all"/>
+	</ItemGroup>
 
-    <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
-        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" PrivateAssets="all" VersionOverride="4.7.0" />
-    </ItemGroup>
-
-    <ItemGroup Condition=" '$(TargetFramework)' == 'net8.0' ">
-        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" PrivateAssets="all" VersionOverride="4.8.0" />
-    </ItemGroup>
-    
-    <ItemGroup Label="Attributes">
-        <EmbeddedResource Include="../$(AssemblyName).Attributes/*.cs" Visible="false" />
-        <AdditionalFiles Include="../$(AssemblyName).Attributes/*.cs" Visible="false" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference
-            Include="..\DependencyPropertyGenerator.Attributes\DependencyPropertyGenerator.Attributes.csproj"
-            PrivateAssets="all" />
-    </ItemGroup>
-
-    <ItemGroup Condition=" '$(TargetFramework)' == '' ">
-        <None Include="$(AssemblyName).props" Pack="true" PackagePath="build" />
-        <None Include="$(OutputPath)\netstandard2.0\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/roslyn4.3.1/cs" Visible="false" />
-        <None Include="$(OutputPath)\netstandard2.0\$(AssemblyName).Attributes.dll" Pack="true" PackagePath="analyzers/dotnet/roslyn4.3.1/cs" Visible="false" />
-        <None Include="$(OutputPath)\netstandard2.0\H.Generators.Extensions.dll" Pack="true" PackagePath="analyzers/dotnet/roslyn4.3.1/cs" Visible="false" />
-<!--        <None Include="$(OutputPath)\net6.0\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/roslyn4.6.0/cs" Visible="false" />-->
-<!--        <None Include="$(OutputPath)\net6.0\$(AssemblyName).Attributes.dll" Pack="true" PackagePath="analyzers/dotnet/roslyn4.6.0/cs" Visible="false" />-->
-<!--        <None Include="$(OutputPath)\net6.0\H.Generators.Extensions.dll" Pack="true" PackagePath="analyzers/dotnet/roslyn4.6.0/cs" Visible="false" />-->
-<!--        <None Include="$(OutputPath)\net7.0\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/roslyn4.7.0/cs" Visible="false" />-->
-<!--        <None Include="$(OutputPath)\net7.0\$(AssemblyName).Attributes.dll" Pack="true" PackagePath="analyzers/dotnet/roslyn4.7.0/cs" Visible="false" />-->
-<!--        <None Include="$(OutputPath)\net7.0\H.Generators.Extensions.dll" Pack="true" PackagePath="analyzers/dotnet/roslyn4.7.0/cs" Visible="false" />-->
-<!--        <None Include="$(OutputPath)\net8.0\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/roslyn4.8.0/cs" Visible="false" />-->
-<!--        <None Include="$(OutputPath)\net8.0\$(AssemblyName).Attributes.dll" Pack="true" PackagePath="analyzers/dotnet/roslyn4.8.0/cs" Visible="false" />-->
-<!--        <None Include="$(OutputPath)\net8.0\H.Generators.Extensions.dll" Pack="true" PackagePath="analyzers/dotnet/roslyn4.8.0/cs" Visible="false" />-->
-    </ItemGroup>
+	<Target DependsOnTargets="ResolveReferences" Name="CopyProjectReferencesToPackage">
+		<ItemGroup>
+			<BuildOutputInPackage Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))"/>
+		</ItemGroup>
+	</Target>
 
 </Project>

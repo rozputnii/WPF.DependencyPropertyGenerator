@@ -6,9 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DependencyPropertyGenerator", "src\libs\DependencyPropertyGenerator\DependencyPropertyGenerator.csproj", "{CCF65923-145A-42D0-A270-17C4AB5949AF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{13016EFF-BA69-4819-99BB-9873F598D0EA}"
-	ProjectSection(SolutionItems) = preProject
-		src\libs\Directory.Build.props = src\libs\Directory.Build.props
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D072B855-2517-4D9E-91E6-00640704B30C}"
 EndProject
@@ -20,16 +17,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		.github\ISSUE_TEMPLATE\bug-report.yaml = .github\ISSUE_TEMPLATE\bug-report.yaml
-		src\Directory.Build.props = src\Directory.Build.props
+		.github\dependabot.yml = .github\dependabot.yml
 		LICENSE = LICENSE
-		README.md = README.md
-		src\Directory.Packages.props = src\Directory.Packages.props
 		.github\workflows\main.yml = .github\workflows\main.yml
 		.github\workflows\pull-request.yml = .github\workflows\pull-request.yml
-		.github\dependabot.yml = .github\dependabot.yml
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DependencyPropertyGenerator.Attributes", "src\libs\DependencyPropertyGenerator.Attributes\DependencyPropertyGenerator.Attributes.csproj", "{90F8AD3B-1C24-447B-99A3-2FBF5066FECA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H.Generators.Extensions", "src\libs\H.Generators.Extensions\H.Generators.Extensions.csproj", "{6603AA2C-E3F2-4860-AF64-44CB4F846AC8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +50,10 @@ Global
 		{90F8AD3B-1C24-447B-99A3-2FBF5066FECA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90F8AD3B-1C24-447B-99A3-2FBF5066FECA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90F8AD3B-1C24-447B-99A3-2FBF5066FECA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6603AA2C-E3F2-4860-AF64-44CB4F846AC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6603AA2C-E3F2-4860-AF64-44CB4F846AC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6603AA2C-E3F2-4860-AF64-44CB4F846AC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6603AA2C-E3F2-4860-AF64-44CB4F846AC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +63,7 @@ Global
 		{1FE5FA56-ADBE-4FDC-8F04-0461ECB4A695} = {D072B855-2517-4D9E-91E6-00640704B30C}
 		{90CD41B6-94F4-48CE-A1A8-ABFAFF1B6079} = {D072B855-2517-4D9E-91E6-00640704B30C}
 		{90F8AD3B-1C24-447B-99A3-2FBF5066FECA} = {13016EFF-BA69-4819-99BB-9873F598D0EA}
+		{6603AA2C-E3F2-4860-AF64-44CB4F846AC8} = {13016EFF-BA69-4819-99BB-9873F598D0EA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7A795FDA-EBB6-4A3E-9387-AEB372F1E670}

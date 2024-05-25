@@ -5,7 +5,7 @@ namespace DependencyPropertyGenerator;
 /// <summary>
 /// Describes the direction of the data flow in a binding.
 /// </summary>
-internal enum DefaultBindingMode
+public enum DefaultBindingMode
 {
     /// <summary>
     /// Causes changes to either the source property or the target property to automatically
